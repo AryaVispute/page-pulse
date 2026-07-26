@@ -8,7 +8,7 @@ import { AuditSkeleton } from '../components/audit/AuditSkeleton';
 import { AuditResults } from '../components/audit/AuditResults';
 
 export const DashboardPage: React.FC = () => {
-  const { status, result, error, auditedUrl, runAudit, isLoading, isError, isSuccess, isIdle } =
+  const { result, error, auditedUrl, runAudit, isLoading, isError, isSuccess, isIdle } =
     useAudit();
 
   return (

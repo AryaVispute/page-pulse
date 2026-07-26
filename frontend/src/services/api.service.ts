@@ -1,4 +1,4 @@
-import { AuditResult, ApiError } from '../types/audit.types';
+import { AuditResult } from '../types/audit.types';
 
 export class ApiService {
   /**
