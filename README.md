@@ -28,21 +28,20 @@
 ## 📸 Screenshots
 
 ### Landing Page
-<!-- Screenshot Placeholder: Landing Page with URL input form and feature overview -->
-*(Placeholder: `assets/screenshots/landing-page.png`)*
+
+![Landing Page](assets/landing-page.png)
 
 ### Audit Results Dashboard
-<!-- Screenshot Placeholder: Audit results dashboard showing metric cards and meta description -->
-*(Placeholder: `assets/screenshots/audit-dashboard.png`)*
+
+![Audit Dashboard](assets/audit-dashboard.png)
 
 ### Error State Alert
-<!-- Screenshot Placeholder: Invalid URL or DNS failure error alert card -->
-*(Placeholder: `assets/screenshots/error-alert.png`)*
+
+![Error Alert](assets/error-alert.png)
 
 ### Unsupported Content Type Error
-<!-- Screenshot Placeholder: 422 Non-HTML content type error notification -->
-*(Placeholder: `assets/screenshots/unsupported-content-type.png`)*
 
+![Unsupported Content Type](assets/unsupported-content-type.png)
 ---
 
 ## 🛠️ Tech Stack
@@ -181,7 +180,7 @@ page-pulse/
 
 ## ⚙️ Environment Variables
 
-The application contains sensible defaults and works out of the box. However, you can configure environment variables in `backend/.env`:
+### Backend (`backend/.env`)
 
 ```env
 PORT=5000
@@ -196,6 +195,14 @@ REQUEST_TIMEOUT=10000
 | `NODE_ENV` | `development` | Node environment state |
 | `CORS_ORIGIN` | `*` | Configured CORS origin whitelist |
 | `REQUEST_TIMEOUT` | `10000` | Axios HTTP request timeout limit in milliseconds (10s) |
+
+### Frontend (`frontend/.env`)
+
+```env
+VITE_API_URL=https://page-pulse-api-7sjr.onrender.com
+```
+
+> For local development, set `VITE_API_URL` to your backend URL (e.g. `http://localhost:5000` when running locally or your deployed Render URL in production).
 
 ---
 
@@ -334,8 +341,8 @@ npm test
 
 ## 🌐 Deployment
 
-- **Frontend**: Hosted on **Vercel** (`https://page-pulse.vercel.app`).
-- **Backend**: Hosted on **Render** (`https://page-pulse-api.onrender.com`).
+- **Frontend**: Hosted on **Vercel** (`https://page-pulse-sable-psi.vercel.app`).
+- **Backend**: Hosted on **Render** (`https://page-pulse-api-7sjr.onrender.com`).
 
 > **Note on Render Deployment**: Render free-tier web services automatically spin down after 15 minutes of inactivity. Initial requests after idle periods may experience a short cold start delay (~30s).
 
