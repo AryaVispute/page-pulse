@@ -42,22 +42,25 @@
 ### Unsupported Content Type Error
 
 ![Unsupported Content Type](assets/unsupported-content-type.png)
----
+
+## 🎥 Demo Video
+
+## [▶ Watch Project Demo](assets/loom-video.mp4)
 
 ## 🛠️ Tech Stack
 
-| Category | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend Framework** | React 18 + Vite | High-performance single page application setup with HMR |
-| **Language** | TypeScript | Strong typing across frontend models & backend contracts |
-| **Styling** | Tailwind CSS + CSS Variables | Modern dark mode theme with glassmorphism utilities |
-| **UI Components** | Custom shadcn/ui primitives | Standardized Button, Input, Card, and Badge primitives |
-| **Icons** | Lucide React | Clean, modern iconography |
-| **Backend Runtime** | Node.js + Express | Fast, unopinionated web framework for backend REST API |
-| **Parsing & Fetching** | Axios + Cheerio | Fast HTTP client & server-side jQuery-like HTML DOM parser |
-| **Schema Validation** | Zod | Runtime validation for URL input schemas |
-| **Testing** | Jest + Supertest | Automated integration test suite for backend API endpoints |
-| **Deployment** | Vercel (Frontend) / Render (Backend) | Production hosting infrastructure |
+| Category               | Technology                           | Description                                                |
+| :--------------------- | :----------------------------------- | :--------------------------------------------------------- |
+| **Frontend Framework** | React 18 + Vite                      | High-performance single page application setup with HMR    |
+| **Language**           | TypeScript                           | Strong typing across frontend models & backend contracts   |
+| **Styling**            | Tailwind CSS + CSS Variables         | Modern dark mode theme with glassmorphism utilities        |
+| **UI Components**      | Custom shadcn/ui primitives          | Standardized Button, Input, Card, and Badge primitives     |
+| **Icons**              | Lucide React                         | Clean, modern iconography                                  |
+| **Backend Runtime**    | Node.js + Express                    | Fast, unopinionated web framework for backend REST API     |
+| **Parsing & Fetching** | Axios + Cheerio                      | Fast HTTP client & server-side jQuery-like HTML DOM parser |
+| **Schema Validation**  | Zod                                  | Runtime validation for URL input schemas                   |
+| **Testing**            | Jest + Supertest                     | Automated integration test suite for backend API endpoints |
+| **Deployment**         | Vercel (Frontend) / Render (Backend) | Production hosting infrastructure                          |
 
 ---
 
@@ -83,6 +86,7 @@ React Dashboard UI (Metric Cards + Status Badges)
 ```
 
 ### Layer Responsibilities
+
 1. **Frontend Presentation**: Renders the dark-mode landing page, manages audit state transitions (`idle`, `loading`, `success`, `error`), and displays animated metric cards.
 2. **API Layer**: Centralized `ApiService` that sends HTTP POST requests to `/api/audit`.
 3. **Controller Layer**: Thin `AuditController` that validates incoming request payloads using Zod schemas.
@@ -139,30 +143,35 @@ page-pulse/
 ## 🚦 Installation & Local Setup
 
 ### Prerequisites
+
 - **Node.js**: v18.x or above
 - **npm**: v9.x or above
 
 ### Step-by-Step Instructions
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/AryaVispute/page-pulse.git
    cd page-pulse
    ```
 
 2. **Install Backend Dependencies**:
+
    ```bash
    cd backend
    npm install
    ```
 
 3. **Install Frontend Dependencies**:
+
    ```bash
    cd frontend
    npm install
    ```
 
 4. **Run the Backend Server**:
+
    ```bash
    cd backend
    npm run dev
@@ -189,12 +198,12 @@ CORS_ORIGIN=*
 REQUEST_TIMEOUT=10000
 ```
 
-| Variable | Default | Description |
-| :--- | :--- | :--- |
-| `PORT` | `5000` | Port number for Express API server |
-| `NODE_ENV` | `development` | Node environment state |
-| `CORS_ORIGIN` | `*` | Configured CORS origin whitelist |
-| `REQUEST_TIMEOUT` | `10000` | Axios HTTP request timeout limit in milliseconds (10s) |
+| Variable          | Default       | Description                                            |
+| :---------------- | :------------ | :----------------------------------------------------- |
+| `PORT`            | `5000`        | Port number for Express API server                     |
+| `NODE_ENV`        | `development` | Node environment state                                 |
+| `CORS_ORIGIN`     | `*`           | Configured CORS origin whitelist                       |
+| `REQUEST_TIMEOUT` | `10000`       | Axios HTTP request timeout limit in milliseconds (10s) |
 
 ### Frontend (`frontend/.env`)
 
@@ -213,6 +222,7 @@ VITE_API_URL=https://page-pulse-api-7sjr.onrender.com
 Audits a public web application URL and returns health & SEO metrics.
 
 #### Request Body
+
 ```json
 {
   "url": "https://example.com"
@@ -224,6 +234,7 @@ Audits a public web application URL and returns health & SEO metrics.
 ### API Responses
 
 #### 1. Success Response (`200 OK`)
+
 ```json
 {
   "status": 200,
@@ -237,6 +248,7 @@ Audits a public web application URL and returns health & SEO metrics.
 ```
 
 #### 2. Validation Error (`400 Bad Request`)
+
 ```json
 {
   "success": false,
@@ -248,6 +260,7 @@ Audits a public web application URL and returns health & SEO metrics.
 ```
 
 #### 3. Unsupported Content Type (`422 Unprocessable Entity`)
+
 ```json
 {
   "success": false,
@@ -259,6 +272,7 @@ Audits a public web application URL and returns health & SEO metrics.
 ```
 
 #### 4. DNS Lookup Failure (`400 Bad Request`)
+
 ```json
 {
   "success": false,
@@ -270,6 +284,7 @@ Audits a public web application URL and returns health & SEO metrics.
 ```
 
 #### 5. Timeout Error (`504 Gateway Timeout`)
+
 ```json
 {
   "success": false,
@@ -306,25 +321,28 @@ npm test
 
 ### Test Coverage Breakdown
 
-| Test Suite | Case | Expected Result |
-| :--- | :--- | :--- |
-| **Happy Path** | Valid HTML Website (`https://example.com`) | Returns HTTP `200` with all 7 metric fields |
-| **Failure Case 1** | Malformed URL string (`http://`) | Returns HTTP `400` with error code `INVALID_URL` |
-| **Failure Case 1** | Missing payload (`{}`) | Returns HTTP `400` with error code `INVALID_URL` |
-| **Failure Case 2** | Non-HTML JSON endpoint (`https://jsonplaceholder.typicode.com/todos/1`) | Returns HTTP `422` with message `"Only HTML webpages are supported."` |
-| **Failure Case 3** | Unreachable domain (`https://thisdomainshouldneverexist12345abcxyz.com`) | Returns HTTP `400` with code `DNS_LOOKUP_FAILED` |
+| Test Suite         | Case                                                                     | Expected Result                                                       |
+| :----------------- | :----------------------------------------------------------------------- | :-------------------------------------------------------------------- |
+| **Happy Path**     | Valid HTML Website (`https://example.com`)                               | Returns HTTP `200` with all 7 metric fields                           |
+| **Failure Case 1** | Malformed URL string (`http://`)                                         | Returns HTTP `400` with error code `INVALID_URL`                      |
+| **Failure Case 1** | Missing payload (`{}`)                                                   | Returns HTTP `400` with error code `INVALID_URL`                      |
+| **Failure Case 2** | Non-HTML JSON endpoint (`https://jsonplaceholder.typicode.com/todos/1`)  | Returns HTTP `422` with message `"Only HTML webpages are supported."` |
+| **Failure Case 3** | Unreachable domain (`https://thisdomainshouldneverexist12345abcxyz.com`) | Returns HTTP `400` with code `DNS_LOOKUP_FAILED`                      |
 
 ---
 
 ## 💡 Architecture & Design Decisions
 
 ### 1. Using Axios + Cheerio Instead of Puppeteer
+
 - **Rationale**: Headless browsers like Puppeteer require heavy memory overhead (~100MB+ per instance) and slow execution speeds (2-5s spin-up time per page). Cheerio combined with Axios provides lightning-fast HTML parsing in milliseconds while keeping memory usage under 10MB, making the service lightweight, cost-effective, and highly scalable.
 
 ### 2. Layered Backend Architecture (Routes -> Controllers -> Services -> Utilities)
+
 - **Rationale**: Separating routing rules, request validation, business logic, and error handlers ensures clean code organization. Controllers remain thin, while services handle DOM evaluation and network calls independently, simplifying unit testing and code maintainability.
 
 ### 3. Reusable UI Primitives & Custom React Hooks (`useAudit`)
+
 - **Rationale**: Isolating API state management (`idle`, `loading`, `success`, `error`) inside a custom `useAudit` hook keeps React components clean and focused purely on presentation. Reusable shadcn-styled components ensure visual consistency across the entire SaaS dashboard.
 
 ---
@@ -351,16 +369,16 @@ npm test
 ## 🛠️ Challenges Faced & Solutions
 
 1. **Safe Content-Type Header Extraction**:
-   - *Challenge*: Axios 1.x uses `AxiosHeaders` objects, where standard bracket notation `headers['content-type']` sometimes returned `undefined`.
-   - *Solution*: Implemented a safe fallback check using `response.headers.get('content-type')` to guarantee reliable header parsing across all Node versions.
+   - _Challenge_: Axios 1.x uses `AxiosHeaders` objects, where standard bracket notation `headers['content-type']` sometimes returned `undefined`.
+   - _Solution_: Implemented a safe fallback check using `response.headers.get('content-type')` to guarantee reliable header parsing across all Node versions.
 
 2. **Accurate Visible Word Counting**:
-   - *Challenge*: Extracting body text using `.text()` included inline JavaScript scripts, CSS stylesheets, and SVG icon text strings.
-   - *Solution*: Created a custom `calculateWordCount` utility that clones the Cheerio DOM instance and strips `script`, `style`, `noscript`, `svg`, `code`, and `nav` elements before splitting text content.
+   - _Challenge_: Extracting body text using `.text()` included inline JavaScript scripts, CSS stylesheets, and SVG icon text strings.
+   - _Solution_: Created a custom `calculateWordCount` utility that clones the Cheerio DOM instance and strips `script`, `style`, `noscript`, `svg`, `code`, and `nav` elements before splitting text content.
 
 3. **Handling websites protected by Cloudflare or anti-bot mechanisms**:
-   - *Challenge*: Some websites return challenge pages or restricted responses instead of the expected HTML.
-   - *Solution*: The application detects these responses gracefully and reports meaningful results without crashing.
+   - _Challenge_: Some websites return challenge pages or restricted responses instead of the expected HTML.
+   - _Solution_: The application detects these responses gracefully and reports meaningful results without crashing.
 
 ---
 
