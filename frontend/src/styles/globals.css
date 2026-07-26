@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-zinc-800 selection:text-zinc-100;
+  }
+}
+
+.glass-panel {
+  background: rgba(18, 18, 21, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-glow {
+  box-shadow: 0 0 50px -10px rgba(255, 255, 255, 0.03);
+}
+
+/* Initial Page Load Animated Grid Loader */
+@keyframes loader_5191 {
+  from {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.initial-loader-grid {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.initial-loader-grid .square {
+  background: #ffffff;
+  border-radius: 2px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -6px;
+  margin-left: -6px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.initial-loader-grid #sq1 {
+  margin-top: -26px;
+  margin-left: -26px;
+  animation: loader_5191 675ms ease-in-out 0s infinite alternate;
+}
+
+.initial-loader-grid #sq2 {
+  margin-top: -26px;
+  margin-left: -6px;
+  animation: loader_5191 675ms ease-in-out 75ms infinite alternate;
+}
+
+.initial-loader-grid #sq3 {
+  margin-top: -26px;
+  margin-left: 14px;
+  animation: loader_5191 675ms ease-in-out 150ms infinite alternate;
+}
+
+.initial-loader-grid #sq4 {
+  margin-top: -6px;
+  margin-left: -26px;
+  animation: loader_5191 675ms ease-in-out 225ms infinite alternate;
+}
+
+.initial-loader-grid #sq5 {
+  margin-top: -6px;
+  margin-left: -6px;
+  animation: loader_5191 675ms ease-in-out 300ms infinite alternate;
+}
+
+.initial-loader-grid #sq6 {
+  margin-top: -6px;
+  margin-left: 14px;
+  animation: loader_5191 675ms ease-in-out 375ms infinite alternate;
+}
+
+.initial-loader-grid #sq7 {
+  margin-top: 14px;
+  margin-left: -26px;
+  animation: loader_5191 675ms ease-in-out 450ms infinite alternate;
+}
+
+.initial-loader-grid #sq8 {
+  margin-top: 14px;
+  margin-left: -6px;
+  animation: loader_5191 675ms ease-in-out 525ms infinite alternate;
+}
+
+.initial-loader-grid #sq9 {
+  margin-top: 14px;
+  margin-left: 14px;
+  animation: loader_5191 675ms ease-in-out 600ms infinite alternate;
+}
+
