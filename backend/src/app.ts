@@ -17,6 +17,13 @@ app.use(
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (_req, res) => {
+  res.json({ message: "Backend is working" });
+});
+
+app.get("/api/test", (_req, res) => {
+  res.json({ message: "API is working" });
+});
 // API Base Route
 app.use('/api', routes);
 
