@@ -1,12 +1,14 @@
 import { AuditResult } from '../types/audit.types';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export class ApiService {
   /**
-   * Executes audit request against backend API endpoint POST /api/audit
+   * Executes audit request against the deployed backend API
    */
   public static async analyzeUrl(url: string): Promise<AuditResult> {
     try {
-      const response = await fetch('/api/audit', {
+      const response = await fetch(`${API_URL}/api/audit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -18,7 +20,11 @@ export class ApiService {
 
       if (!response.ok) {
         const errorData = data as any;
-        const errorMessage = errorData.message || errorData.error || 'Failed to perform website audit.';
+        const errorMessage =
+          errorData.message ||
+          errorData.error ||
+          'Failed to perform website audit.';
+
         throw new Error(errorMessage);
       }
 
@@ -27,7 +33,10 @@ export class ApiService {
       if (err instanceof Error) {
         throw err;
       }
-      throw new Error('An unexpected network error occurred while reaching the audit server.');
+
+      throw new Error(
+        'An unexpected network error occurred while reaching the audit server.'
+      );
     }
   }
 }
